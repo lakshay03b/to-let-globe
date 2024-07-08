@@ -10,7 +10,7 @@ const ForgotPasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const res = await axios.post('http://localhost:5173/api/auth/forgot-password', { email });
       setMessage(res.data.message);
       setError('');
     } catch (err) {
