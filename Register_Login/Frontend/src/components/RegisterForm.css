@@ -2,7 +2,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: #000;
   color: #fff;
 }
@@ -11,6 +10,8 @@ body {
   background: #111;
   border-radius: 20px;
   padding: 20px;
+  width: 500px;
+  height: 500px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -21,44 +22,62 @@ body {
 }
 
 .register-form h2 {
-  margin-bottom: 20px;
+  font-size: xx-large;
+    margin-bottom: 28px;
 }
 
-.input-container {
+.register-input-container {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
   position: relative;
 }
 
-.input-container i {
+.register-input-container i {
   position: absolute;
   left: 10px;
 }
 
-.input-container input {
-  padding: 10px;
-  padding-left: 30px;
-  width: 250px;
+.register-input-container input {
+  padding: 15px;
+  padding-left: 36px;
+  width: 400px;
   border: none;
   border-radius: 5px;
-  background: #222;
+  background: transparent;
+  outline: none;
   color: #fff;
 }
 
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background: linear-gradient(to right, #00d4ff, #ffcc00);
-  color: #000;
+.register-form button {
+  margin: 6% 0%;
+  padding: 12px 175px;
+  border: 1px solid yellow;
+  border-radius: 27px;
+  background: transparent;
+  color: white;
   cursor: pointer;
 }
 
-button:hover {
+.register-form button:hover {
   background: linear-gradient(to right, #00b3e6, #e6b800);
 }
 
+.register-link-container {
+  display: flex;
+  justify-content: space-between;
+  width: 79%;
+  margin-top: 20px;
+}
+
+.register-link-container a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+
+.register-link-container a:hover {
+  text-decoration: underline;
+}
 .error {
   color: red;
   margin-top: 10px;

@@ -1,8 +1,7 @@
 import express from "express"
 import {connectDB} from "../Backend/config/db.js"
 import cors from "cors"
-import bodyParser from "body-parser";
-
+import authRoutes from "./routes/authRoutes.js"
 
 const app = express();
 const PORT = 5000;
@@ -12,10 +11,10 @@ connectDB();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Routes
-app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/auth',authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

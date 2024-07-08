@@ -1,20 +1,18 @@
 import jwt from "jsonwebtoken"
 
-module.exports = function (req, res, next) {
-  // Get token from header
-  const token = req.header('x-auth-token');
+const authMiddleWare = async (req,res,next) => {
+    const {token} = req.headers;
+    if(!token){
+        return res.json({success:false,mesaage:"Not Authorised Login Again"});
+    }
+    try{
+        const token_decode = jwt.verify(token,process.env.JWT_SECRET);
+        req.body.userId = token_decode.id;
+        next();
+    }catch(error) {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
 
-  // Check if not token
-  if (!token) {
-    return res.status(401).json({ message: 'No token, authorization denied' });
-  }
-
-  // Verify token
-  try {
-    const decoded = jwt.verify(token, 'secret');
-    req.user = decoded.user;
-    next();
-  } catch (err) {
-    res.status(401).json({ message: 'Token is not valid' });
-  }
-};
+export default authMiddleWare; 
