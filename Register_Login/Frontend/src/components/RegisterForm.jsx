@@ -1,80 +1,95 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './RegisterForm.css';
+import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterForm = () => {
- 
   const [error, setError] = useState('');
-  const [data,setData] = useState({
-    name: "",
-    username:"",
-    email:"",
-    password:""
+  const [data, setData] = useState({
+    name: '',
+    username: '',
+    email: '',
+    password: ''
   });
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData(data => ({ ...data, [name]: value }));
-};
+    setData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register',data);
-      console.log(res.data);
+      const res = await axios.post('/api/register',data);
+      setData({
+        name: '',
+        username: '',
+        email: '',
+        password: ''
+      });
       setError('');
+      if (res.data.success) {
+        toast.success('Registration successful!');
+      } else {
+        toast.error(res.data.message);
+      }
       // Handle successful registration (e.g., save token, redirect)
     } catch (err) {
       setError(err.response.data.message);
+      toast.error(`Registration failed: ${err.response.data.message}`);
     }
   };
 
   return (
+    <div>
+      <ToastContainer />
     <div className="register-container">
       <form onSubmit={handleSubmit} className="register-form">
         <h2>Register</h2>
         <div className="register-input-container">
-          <i className="fas fa-user"></i>
+          <FaUser size={20} />
           <input
-            name='name'
-            type="text" 
-            placeholder="Name" 
-            value={data.name} 
-            onChange={onChangeHandler} 
+            name="name"
+            type="text"
+            placeholder="Name"
+            value={data.name}
+            onChange={onChangeHandler}
             required
           />
         </div>
         <div className="register-input-container">
-          <i className="fas fa-user"></i>
-          <input 
-            name='username'
-            type="text" 
-            placeholder="Username" 
-            value={data.username} 
-            onChange={onChangeHandler} 
+          <FaUser size={20} />
+          <input
+            name="username"
+            type="text"
+            placeholder="Username"
+            value={data.username}
+            onChange={onChangeHandler}
             required
           />
         </div>
         <div className="register-input-container">
-          <i className="fas fa-user"></i>
-          <input 
-            name='email'
-            type="text" 
-            placeholder="E-mail" 
-            value={data.email} 
-            onChange={onChangeHandler} 
+          <FaEnvelope size={20} />
+          <input
+            name="email"
+            type="text"
+            placeholder="E-mail"
+            value={data.email}
+            onChange={onChangeHandler}
             required
           />
         </div>
         <div className="register-input-container">
-          <i className="fas fa-lock"></i>
-          <input 
-            name='password'
-            type="password" 
-            placeholder="Password" 
-            value={data.password} 
-            onChange={onChangeHandler} 
+          <FaLock size={20} />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={data.password}
+            onChange={onChangeHandler}
             required
           />
         </div>
@@ -86,7 +101,17 @@ const RegisterForm = () => {
         </div>
       </form>
     </div>
+  </div>
   );
 };
+
+// const App = () => {
+//   return (
+//     <div>
+      
+//       <RegisterForm />
+//     </div>
+//   );
+// };
 
 export default RegisterForm;

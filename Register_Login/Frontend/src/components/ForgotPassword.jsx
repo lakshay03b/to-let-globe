@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './ForgotPassword.css';
+import { FaEnvelope } from 'react-icons/fa';
 
 const ForgotPasswordForm = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const ForgotPasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const res = await axios.post('http://localhost:5173/api/auth/forgot-password', { email });
       setMessage(res.data.message);
       setError('');
     } catch (err) {
@@ -23,8 +24,8 @@ const ForgotPasswordForm = () => {
     <div className="forgot-password-container">
       <form onSubmit={handleSubmit} className="forgot-password-form">
         <h2>Forgot Password</h2>
-        <div className="input-container">
-          <i className="fas fa-envelope"></i>
+        <div className="forgot-input-container">
+          <FaEnvelope size={20}/>
           <input 
             type="email" 
             placeholder="Email" 
