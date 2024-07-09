@@ -5,12 +5,13 @@ Signup/Register Application This application allows users to create an account b
 
                               ## Installation
                               
-    Install my-project with npx
+    Install my-project with npm
 
 ```bash
-  npx Create-react-app App
+  npm create vite@latest
   cd App
-  Open the application in your browser:http://localhost:3000
+  npm run dev
+  Open the application in your browser:http://localhost:5173
 ```
     
                                  ## Features
@@ -35,9 +36,9 @@ To deploy this project run
 
 
 Navigate to the project directory: cd to-let-globe
-Install dependencies: npx install
+Install dependencies: npm install
 
-Start the development server: npm start
+Start the development server: npm run dev
 Open the application in your browser: http://localhost:3000
 
 ```
