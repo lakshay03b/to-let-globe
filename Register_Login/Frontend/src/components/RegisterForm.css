@@ -26,7 +26,8 @@ body {
 
 .register-form h2 {
   font-size: xx-large;
-    margin-bottom: 28px;
+    margin-bottom: 2px;
+    margin-top: 0px;
 }
 
 .register-input-container {
@@ -48,9 +49,27 @@ body {
   color: #fff;
 
 }
+.register-input-container select {
+  padding: 15px;
+  padding-left: 10px;
+  width: 420px;
+  border: none;
+  border-bottom: 1px solid;
+  background: transparent;
+  outline: none;
+  color: #fff;
+
+}
+
+.register-option{
+  background:#000;
+  color: #fff;
+  border: none;
+  outline: none;
+}
 
 .register-form button {
-  margin: 6% 0%;
+  margin: 3% 0%;
   padding: 12px 175px;
   border: 1px solid yellow;
   border-radius: 27px;
@@ -67,7 +86,6 @@ body {
   display: flex;
   justify-content: space-between;
   width: 79%;
-  margin-top: 20px;
 }
 
 .register-link-container a {
@@ -78,6 +96,11 @@ body {
 .register-link-container a:hover {
   text-decoration: underline;
 }
+
+.inverted-icon {
+    transform: scaleX(-1);
+}
+
 .error {
   color: red;
   margin-top: 10px;

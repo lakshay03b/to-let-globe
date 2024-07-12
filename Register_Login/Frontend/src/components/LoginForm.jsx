@@ -9,7 +9,7 @@ import { FaLock } from 'react-icons/fa';
 const LoginForm = () => {
   const [data, setData] = useState({
     username: "",
-    password: ""
+    password: "",
   });
   const [error, setError] = useState('');
 
@@ -33,8 +33,9 @@ const LoginForm = () => {
       setError(''); 
       setData({
         username: "",
-        password: ""
-      })
+        password: "",
+        role: "User"
+      });
 
     } catch (err) {
       setError(err.response.data.message);
@@ -44,40 +45,40 @@ const LoginForm = () => {
 
   return (
     <div>
-      <ToastContainer />
-    <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-form">
-        <h2>Login</h2>
-        <div className="login-input-container">
-          <FaUser size={20} />
-          <input 
-            type="text" 
-            name='username'
-            placeholder="Username" 
-            value={data.username} 
-            onChange={onChangeHandler} 
-            required
-          />
-        </div>
-        <div className="login-input-container">
-          <FaLock size={20}/>
-          <input 
-            type="password" 
-            name='password'
-            placeholder="Password" 
-            value={data.password} 
-            onChange={onChangeHandler} 
-            required
-          />
-        </div>
-        <button type="submit">LOGIN</button>
-        {error && <p className="error">{error}</p>}
-        <div className="login-link-container">
-          <a href="/forgot-password">Forgot Password?</a>
-          <a href="/register">Register</a>
-        </div>
-      </form>
-    </div>
+      <ToastContainer/>
+      <div className="login-container">
+        <form onSubmit={handleSubmit} className="login-form">
+          <h2>Login</h2>
+          <div className="login-input-container">
+            <FaUser size={20} />
+            <input 
+              type="text" 
+              name='username'
+              placeholder="Username" 
+              value={data.username} 
+              onChange={onChangeHandler} 
+              required
+            />
+          </div>
+          <div className="login-input-container">
+            <FaLock size={20}/>
+            <input 
+              type="password" 
+              name='password'
+              placeholder="Password" 
+              value={data.password} 
+              onChange={onChangeHandler} 
+              required
+            />
+          </div>
+          <button type="submit">LOGIN</button>
+          {error && <p className="error">{error}</p>}
+          <div className="login-link-container">
+            <a href="/forgot-password">Forgot Password?</a>
+            <a href="/register">Register</a>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
