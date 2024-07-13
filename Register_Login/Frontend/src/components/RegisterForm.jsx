@@ -53,7 +53,7 @@ const RegisterForm = () => {
           <div className="register-input-container">
             <FaUser size={20} />
             <input
-              name="username"
+              name="username" 
               type="text"
               placeholder="Username"
               value={data.username}

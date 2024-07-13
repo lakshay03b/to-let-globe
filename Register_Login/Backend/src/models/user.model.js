@@ -19,13 +19,6 @@ const userSchema = new Schema(
       lowercase: true,
       trim: true,
     },
-    name: {
-      type: String,
-      required: true,
-      lowercase: true,
-      trim: true,
-      index: true,
-    },
 
     password: {
       type: String,
@@ -34,6 +27,14 @@ const userSchema = new Schema(
     refreshToken: {
       type: String,
     },
+    contactNo:{
+      type: String,
+      required: [true, "Contact"]
+    },
+    role:{
+      type: String,
+      required: true
+    }
   },
 
   { timestamps: true }
